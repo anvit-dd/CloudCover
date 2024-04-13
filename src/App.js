@@ -1,21 +1,17 @@
-import { useState } from "react";
-import Header from "./components/header/index"
-import SideBar from "./components/sidebar/index"
-import FileView from "./components/FilesView/filesview"
+import {BrowserRouter, Route, Routes} from "react-router-dom"
+import Home from "./components/Home"
+import SignupForm from "./components/Auth/signup"
+import LoginForm from "./components/Auth/login"
 function App() {
-  const [user, userState] = useState({
-    displayName: "Anvit Dadape",
-    email: "anvit.dd@gmail.com",
-    emailVerfied: true,
-    phoneNumber: null,
-    photoURL: "https://lh3.googleusercontent.com/a/ACg8ocLuSZrohsqB2qzkg-DOAZUuKp4eDGt5DAszNpouaX7_TQ=s315-c-no"
-  })
   return (
-    <div>
-      <Header userPhoto = {user.photoURL}/>
-      <SideBar/>
-    </div>
-  );
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<LoginForm/>}/>
+      <Route path = "/signup" element = {<SignupForm/>}/>
+      <Route path = "/home" element = {<Home/>}/>
+    </Routes>
+  </BrowserRouter>
+  )
 }
 
 export default App;

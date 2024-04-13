@@ -4,7 +4,7 @@ import Modal from '@material-ui/core/Modal'
 import firebase from 'firebase'
 import { storage, db } from '../../firebaseinit';
 
-export default function Newfile() {
+export default function Newfile({email}) {
   const [open, setOpen] = useState(false)
   const [file, setFile] = useState(null)
   const [uploading, setUploading] = useState(false)
@@ -43,10 +43,11 @@ export default function Newfile() {
 }
   return (
     <div>
-      <button onClick = {handleOpen} className="flex bg-blue-500 p-5 w-[125px] text-xl text-white justify-center rounded-2xl font-mono shadow-md shadow-slate-500 hover:bg-blue-600">
+      <button onClick = {handleOpen} className="flex bg-blue-500 p-5 w-[125px] text-xl text-white justify-center rounded-2xl font-semibold shadow-md shadow-slate-500 hover:bg-blue-600">
         <UploadIcon className="scale-110 mt-1 mr-3"/>
         <p>Upload</p>
       </button>
+
       <Modal open = {open} onClose={handleClose}> 
         <div className='flex justify-center items-center h-screen'>
           <div className=' flex-col w-[25%] h-min bg-slate-200 p-2 text-center text-xl rounded shadow-md'>
