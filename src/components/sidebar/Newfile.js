@@ -4,7 +4,7 @@ import Modal from '@material-ui/core/Modal'
 import firebase from 'firebase'
 import { storage, db } from '../../firebaseinit';
 
-export default function Newfile({email}) {
+export default function Newfile() {
   const [open, setOpen] = useState(false)
   const [file, setFile] = useState(null)
   const [uploading, setUploading] = useState(false)
@@ -16,14 +16,19 @@ export default function Newfile({email}) {
   }
 
   const handleChange = (e) => {
-    if(e.target.files[0]){
+        if(e.target.files[0])
+    {
       setFile(e.target.files)
     }
   }
 
   const handleUpload = () => {
-    setUploading(true)
-    if(file!=null){
+    if(file==null){
+      setOpen(false)
+      setFile(null)
+    }
+    else{
+      setUploading(true)
       for (let i = 0; i < file.length; i++) {
         storage.ref(`files/${file[i].name}`).put(file[i]).then(snapshot => {
             storage.ref('files').child(file[i].name).getDownloadURL().then(url => {
@@ -36,10 +41,10 @@ export default function Newfile({email}) {
                 })
             })
       }
+      setUploading(false)
+      setOpen(false)
+      setFile(null)
     }
-    setUploading(false)
-    setOpen(false)
-    setFile(null)
 }
   return (
     <div>

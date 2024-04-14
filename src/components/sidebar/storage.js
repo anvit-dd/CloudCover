@@ -48,7 +48,7 @@ const Storage = () => {
     return (
         <div>
             <div className='bg-gray-300 mt-5 h-2 rounded-full'>
-                <div className='bg-sky-500 h-2 rounded-full' style={{ width: calculateProgressBarWidth(storageUsed, 1073741824) }}>
+                <div className='bg-blue-500 h-2 rounded-full' style={{ width: calculateProgressBarWidth(storageUsed, 1073741824) }}>
                 </div>
             </div>
             <p className='text-center mt-2 text-gray-700 font-medium'>{formatBytes(storageUsed)} of 1 GB used</p>

@@ -7,10 +7,10 @@ import AccessTimeOutlinedIcon from '@material-ui/icons/AccessTimeOutlined';
 import StorageOutlinedIcon from '@material-ui/icons/StorageOutlined';
 import StorageIndicator from '../sidebar/storage'
 
-function index({email}) {
+function index() {
   return (
       <div className="w-[15%] h-[90vh] bg-slate-50 p-4">
-        <NewFile email = {email}/>
+        <NewFile/>
         <div className='mt-6 ml-4'>
           <SidebarItem icon = {(HomeOutlinedIcon)} label ={"Home"}/>
           <SidebarItem icon = {(DvrOutlinedIcon)} label ={"My Files"}/>
