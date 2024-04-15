@@ -42,7 +42,7 @@ const Header = ({setSearchQuery, onSignout }) => {
         <div className="flex items-center mr-5 text-slate-600 gap-3 scale-125">
           <HelpOutlineIcon />
           <SettingsIcon />
-          <AppsIcon />
+          <AppsIcon className='' />
         </div>
         <button onClick={() => setOpen(true)} className='rounded-full hover:bg-slate-300 p-4'>
           <AccountCircleIcon className='text-sky-600 scale-[190%]' />

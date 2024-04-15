@@ -9,6 +9,13 @@ const Home = () => {
   const location = useLocation();
   let userEmail = location.state?.userEmail;
   const [searchQuery, setSearchQuery] = useState("");
+  const get_folder_name = (userEmail)=>{
+    if(userEmail === "")
+    {
+      return null
+    }
+    return (userEmail.split("@")[0])
+  }
 
   const handleSignout = () => {
     userEmail = ""
@@ -20,8 +27,11 @@ const Home = () => {
       <div>
         <Header setSearchQuery={setSearchQuery} onSignout={handleSignout} />
         <div className="flex">
-          <SideBar />
-          {searchQuery === "" ? <FileView /> : <FileSearchResults query={searchQuery} />}
+          <SideBar folder_name = {get_folder_name(userEmail)}/>
+          {searchQuery === "" ? 
+          <FileView folder_name = {get_folder_name(userEmail)} />
+          : 
+          <FileSearchResults query={searchQuery} folder_name= {get_folder_name(userEmail)}/>}
         </div>
       </div>
     ) : (

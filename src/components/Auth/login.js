@@ -39,7 +39,7 @@ const Login = () => {
                 </div>
             </div>
             </div>
-            <button onClick={verifyPass} className='w-full mt-4 p-1 bg-sky-500 text-white font-semibold rounded-md hover:drop-shadow-md'>Login</button>
+            <button onClick={verifyPass} className='w-full mt-4 p-1 bg-sky-500 text-white font-semibold rounded-md hover:bg-sky-600'>Login</button>
             <div className='flex gap-2 mt-4 text-md text-center justify-center'>
                <p>Don't have an account?</p><Link to="/signup" className='underline font-thin'> SignUp</Link>
             </div>

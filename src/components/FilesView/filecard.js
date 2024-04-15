@@ -38,7 +38,7 @@ const filecard = ({caption, fileurl}) => {
         </div>
           {
             isImage?
-            (<img src = {fileurl} className='w-[100%] aspect-square object-cover rounded-lg'/>)
+            (<img src = {fileurl} alt = {caption} className='w-[100%] aspect-square object-cover rounded-lg'/>)
             :
             (
               <div className='flex items-center justify-center w-max mt-32 mx-auto scale-[700%]'>

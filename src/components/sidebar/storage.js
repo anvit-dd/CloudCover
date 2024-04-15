@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { db } from "../../firebaseinit"
 
-const Storage = () => {
+const Storage = ({folder_name}) => {
     const [files, setFiles] = useState([])
     const [storageUsed, setStorageUsed] = useState(0)
 
     useEffect(() => {
-        const unsubscribe = db.collection("myFiles").onSnapshot(snapshot => {
+        const unsubscribe = db.collection(folder_name).onSnapshot(snapshot => {
             const fetchedFiles = snapshot.docs.map(docs => ({
                 ...docs.data()
             }))

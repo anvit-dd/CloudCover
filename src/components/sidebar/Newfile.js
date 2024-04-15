@@ -4,7 +4,7 @@ import Modal from '@material-ui/core/Modal'
 import firebase from 'firebase'
 import { storage, db } from '../../firebaseinit';
 
-export default function Newfile() {
+export default function Newfile({folder_name}){
   const [open, setOpen] = useState(false)
   const [file, setFile] = useState(null)
   const [uploading, setUploading] = useState(false)
@@ -32,7 +32,7 @@ export default function Newfile() {
       for (let i = 0; i < file.length; i++) {
         storage.ref(`files/${file[i].name}`).put(file[i]).then(snapshot => {
             storage.ref('files').child(file[i].name).getDownloadURL().then(url => {
-              db.collection('myFiles').add({
+              db.collection(`${folder_name}`).add({
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               caption: file[i].name,
               fileUrl: url,

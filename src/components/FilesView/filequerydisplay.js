@@ -2,11 +2,11 @@ import {React, useEffect, useState} from 'react'
 import {db} from "../../firebaseinit"
 import FileCard from "../FilesView/filecard"
 
-const Filequerydisplay = ({query}) => {
+const Filequerydisplay = ({query, folder_name}) => {
 
     const [queryfiles, setqueryfiles] = useState([])
     useEffect(()=>{
-        db.collection("myFiles").onSnapshot(snapshot=>{
+        db.collection(`${folder_name}`).onSnapshot(snapshot=>{
         const fetchedFiles = snapshot.docs.map(docs=>({
             id:docs.id,
             ...docs.data()

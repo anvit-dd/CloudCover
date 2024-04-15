@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { db } from "../../firebaseinit";
 import FileItem from './fileitem';
 import FileCard from './filecard';
-const FilesView = () => {
+const FilesView = ({folder_name}) => {
   const [files, setFiles] = useState([]);
 
   useEffect(() => {
-    const unsubscribe = db.collection('myFiles').onSnapshot(snapshot => {
+    const unsubscribe = db.collection(`${folder_name}`).onSnapshot(snapshot => {
       const fetchedFiles = snapshot.docs.map(doc => ({
         id: doc.id,
         item: doc.data()
@@ -18,7 +18,7 @@ const FilesView = () => {
 
   return (
     <div className='w-[100%]'>
-      <div className='flex justify-start h-[340px] mb-5 m-5'>
+      <div className='flex justify-around h-[340px] mb-5 m-5'>
         {
           files.length>0?
         (
