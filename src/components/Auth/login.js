@@ -1,21 +1,25 @@
 import React, { useState } from 'react'
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import ErrorIcon from '@material-ui/icons/ErrorOutline';
 import { Link,useNavigate } from 'react-router-dom';
+import ReplaySharpIcon from '@material-ui/icons/CachedRounded';
 import {auth} from '../../firebaseinit'
 
 const Login = () => {
     const navigate = useNavigate()
     const [email, setmail] = useState("")
     const [password, setPass] = useState("")
+    const [isSubmit, setsubmit] = useState(false)
     const [error, setError] = useState(null)
 
     const verifyPass = async()=>{
-        await auth.signInWithEmailAndPassword(email, password).then((usercred)=>{
-            alert("User signed in with email address: "+email)
+        setsubmit(true)
+        await auth.signInWithEmailAndPassword(email, password).then(()=>{
             navigate("/home", { state: { userEmail: email } })
         }).catch((error) => {
             setError("Invalid credentials!")
+            setsubmit(false)
             return
           });
     }
@@ -39,11 +43,23 @@ const Login = () => {
                 </div>
             </div>
             </div>
-            <button onClick={verifyPass} className='w-full mt-4 p-1 bg-sky-500 text-white font-semibold rounded-md hover:bg-sky-600'>Login</button>
+            <button onClick={verifyPass} className='flex gap-1 justify-center w-full mt-4 p-1 bg-sky-500 text-white font-semibold rounded-md hover:bg-sky-600'>
+                {isSubmit&&<ReplaySharpIcon className='animate-spin'/>}
+                <p>Login</p>
+            </button>
             <div className='flex gap-2 mt-4 text-md text-center justify-center'>
                <p>Don't have an account?</p><Link to="/signup" className='underline font-thin'> SignUp</Link>
             </div>
-            {error && <p className='text-center text-red-600 font-thin'>{error}</p>}
+            {error?
+                (
+                <div className='flex gap-1 justify-center mt-4'>
+                    <ErrorIcon className='text-red-600 pt-1 scale-110'/>
+                    <p className='text-justify text-red-600 font-thin'>{error}</p>
+                </div>
+                )
+                :
+                (<></>)
+            }
         </div>
     )
     }

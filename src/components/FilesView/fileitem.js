@@ -4,7 +4,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { db } from "../../firebaseinit";
 
 
-const FileItem = ({ id, caption, timestamp, fileurl, size }) => {
+const FileItem = ({ id, caption, timestamp, fileurl, size, folder_name }) => {
   const month_arr = ["Jan", "Feb", 'Mar', "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const filedate = `${timestamp?.toDate().getDate()} ${month_arr[timestamp?.toDate().getMonth()]} ${timestamp?.toDate().getFullYear()}`;
   const char_lim = 70;
@@ -25,7 +25,7 @@ const FileItem = ({ id, caption, timestamp, fileurl, size }) => {
   const deleteData = (fileid)=>
   {
     try{
-      db.collection('myFiles').doc(id).delete()
+      db.collection(folder_name).doc(id).delete()
       alert("File removed")
     }
     catch(error){

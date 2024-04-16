@@ -54,6 +54,7 @@ const FilesView = ({folder_name}) => {
                       fileurl={item.fileUrl}
                       size={item.size}
                       timestamp={item.timestamp}
+                      folder_name = {folder_name}
                     />
                 ))}
               </tbody>
