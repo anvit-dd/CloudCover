@@ -34,13 +34,10 @@ const FileItem = ({ id, caption, timestamp, fileurl, size, folder_name }) => {
   }
 
   return (
-    <tr key={id} className="bg-white border-b-2">
-      <td className='px-5 text-center'>
-        <button onClick={handleData} className='p-2 text-center rounded-full hover:bg-slate-200 hover:text-red-600'><DeleteIcon /></button>
-      </td>
-      <td className="inline-flex px-2 py-4 font-medium text-gray-900 text-left">
+    <tr key={id} className="bg-white border-b-2 grid grid-cols-11">
+      <td className="inline-flex px-2 py-4 font-medium text-gray-900o col-span-6">
         <a href={fileurl} target="_blank" rel="noreferrer" download className='flex items-center font-medium'>
-          <div className="flex-1 items-center h-[100%] flex hover:text-sky-600">
+          <div className="items-center w-[100%] h-[100%] flex ml-4 hover:text-sky-600">
             <InsertDriveFileIcon className='text-slate-700 mr-2' />
             {caption.length > char_lim ?
               (<span>{caption.slice(0, char_lim) + caption.slice(-5, -1)}</span>)
@@ -50,11 +47,14 @@ const FileItem = ({ id, caption, timestamp, fileurl, size, folder_name }) => {
           </div>
         </a>
       </td>
-      <td className="px-6 py-4 text-center">
+      <td className="px-2 py-4 text-center col-span-2">
         {filedate}
       </td>
-      <td className="px-6 py-4 text-center">
+      <td className="px-2 py-4 text-center col-span-2">
         {get_file_size(size)}
+      </td>
+      <td className='px-5 col-span-1'>
+        <button onClick={handleData} className='p-2 text-center rounded-full hover:bg-slate-200 hover:text-red-600'><DeleteIcon /></button>
       </td>
     </tr>
   );

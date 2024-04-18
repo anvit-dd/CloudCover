@@ -22,6 +22,7 @@ export default function Newfile({folder_name}){
   }
 
   const handleUpload = () => {
+    console.log(file);
     if(file.length===0){
       setOpen(false)
       setFile(null)
@@ -42,7 +43,7 @@ export default function Newfile({folder_name}){
       }
       setUploading(false)
       setOpen(false)
-      setFile(null)
+      setFile([])
     }
 }
 
@@ -58,6 +59,11 @@ export default function Newfile({folder_name}){
     setHighlighted(true);
 
   };
+
+  const handleRemoveFile = (file_name)=>{
+    setFile(file.filter(obj => obj.name !== file_name))
+  }
+
 
   const handleDragLeave = (e) => {
     e.preventDefault();
@@ -111,19 +117,24 @@ export default function Newfile({folder_name}){
                 <label htmlFor='plain-input' className='m-auto px-2 py-1.5 text-blue-500 cursor-pointer text-center font-semibold border-2 border-blue-500 rounded hover:bg-blue-500 hover:text-white duration-200'>Browse Files</label>
               </div>
             </div>
-            <div className='h-[200px] overflow-scroll'>
-              {file.map((f)=>(
-                <div className='flex bg-sky-50 my-4 p-2 rounded-lg'>
-                  <div className='flex items-center w-[100%]'>
-                    <div className='flex items-center pl-2'>
-                      <InsertDriveFileIcon/>
-                      <p className='text-lg'>{f.name}</p>
+            {
+              file.length===0?
+              (<p className='my-2 text-center text-slate-600'>No files added...</p>)
+              :
+              (<div className='h-[200px] overflow-scroll p-2'>
+                {file.map((f)=>(
+                  <div key={f.name} className='flex bg-sky-50 my-4 p-2 rounded-lg'>
+                    <div className='flex items-center w-[100%]'>
+                      <div className='flex items-center pl-2'>
+                        <InsertDriveFileIcon/>
+                        <p className='text-lg'>{f.name}</p>
+                      </div>
+                      <button onClick= {()=>{handleRemoveFile(f.name)}} className='flex items-center justify-center ml-auto p-1 rounded-full hover:text-red-500 hover:bg-sky-100'><ClearIcon/></button>
                     </div>
-                    <button className='flex items-center justify-center ml-auto p-1 rounded-full hover:text-red-500 hover:bg-sky-100'><ClearIcon/></button>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>)
+            }
             <div className='flex gap-2'>
               <button onClick = {handleClose} className='bg-white p-2 px-4 mt-4 mr-auto font-medium text-black border-2 rounded hover:bg-slate-100'>Cancel</button>
               <button onClick = {handleUpload} className='bg-blue-500 p-2 px-4 mt-4 font-semibold text-slate-200 rounded hover:bg-blue-600'>Upload Files</button>

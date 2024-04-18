@@ -32,22 +32,22 @@ const FilesView = ({folder_name}) => {
       }
       </div>
       <div className='relative overflow-x-auto'>
-      <table className="w-full text-md text-gray-500">
-        <thead className="text-md text-gray-700 bg-slate-50">
-                  <tr>
-                      <th className='w-[5%]'></th>
-                      <th scope="col" className="px-32 py-3 rounded-s-lg text-left">
-                          Name
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                          Date Added
-                      </th>
-                      <th scope="col" className="px-6 py-3 rounded-e-lg">
-                          Size
-                      </th>
-                  </tr>
-              </thead>
-        </table>
+        <table className="w-[100%] text-md text-gray-500">
+          <thead className="text-md text-gray-700 bg-slate-50">
+                    <tr className='grid grid-cols-11'>
+                        <th scope="col" className="p-2  pl-32 mr-auto text-left col-span-6">
+                            Name
+                        </th>
+                        <th scope="col" className="p-2 m-auto text-left col-span-2">
+                            Date Added
+                        </th>
+                        <th scope="col" className="p-2 m-auto rounded-e-lg text-left col-span-2">
+                            Size
+                        </th>
+                        <th className=''></th>
+                    </tr>
+                </thead>
+          </table>
       </div>
       <div className="relative overflow-x-auto overflow-y-scroll">
           <table className="w-full text-md text-gray-500">
