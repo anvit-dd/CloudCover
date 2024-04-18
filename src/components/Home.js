@@ -24,7 +24,7 @@ const Home = () => {
 
   return (
     userEmail ? (
-      <div>
+      <div className='h-screen'>
         <Header setSearchQuery={setSearchQuery} onSignout={handleSignout} />
         <div className="flex">
           <SideBar folder_name = {get_folder_name(userEmail)}/>

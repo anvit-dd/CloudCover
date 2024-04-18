@@ -16,13 +16,14 @@ const FilesView = ({folder_name}) => {
     return () => unsubscribe();
   }, []);
 
+
   return (
-    <div className='w-[100%]'>
-      <div className='flex justify-around h-[340px] mb-5 m-5'>
+    <div className='w-[85%] ml-auto mt-24'>
+      <div className='flex mb-5 m-5 justify-start'>
         {
           files.length>0?
         (
-          files.slice(0,5).map(({id, item})=>(
+          files.slice(0,4).map(({id, item})=>(
             <FileCard caption={item.caption} fileurl={item.fileUrl}/>
           ))
         )
@@ -30,9 +31,9 @@ const FilesView = ({folder_name}) => {
         (<p className='mx-auto my-auto text-6xl text-gray-500 font-semibold'>No Files Added</p>)
       }
       </div>
-      <div className="relative overflow-x-auto">
-          <table className="w-full text-md text-gray-500">
-              <thead className="text-md text-gray-700 bg-slate-50">
+      <div className='relative overflow-x-auto'>
+      <table className="w-full text-md text-gray-500">
+        <thead className="text-md text-gray-700 bg-slate-50">
                   <tr>
                       <th className='w-[5%]'></th>
                       <th scope="col" className="px-32 py-3 rounded-s-lg text-left">
@@ -46,6 +47,10 @@ const FilesView = ({folder_name}) => {
                       </th>
                   </tr>
               </thead>
+        </table>
+      </div>
+      <div className="relative overflow-x-auto overflow-y-scroll">
+          <table className="w-full text-md text-gray-500">
               <tbody className='first:bg-slate-400'>
                 {files.map(({ id, item }) => (
                     <FileItem

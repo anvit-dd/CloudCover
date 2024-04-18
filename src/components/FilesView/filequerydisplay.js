@@ -11,18 +11,17 @@ const Filequerydisplay = ({query, folder_name}) => {
             id:docs.id,
             ...docs.data()
         }))
-        console.log("THe current query is: "+query);
         const filteredFiles = fetchedFiles.filter((file)=>file.caption.toLowerCase().startsWith(query.toLowerCase()))
         setqueryfiles(filteredFiles)
     })},[query])
 
     return (
-    <div className='w-[100%] m-4'>
+    <div className='w-[85%] ml-auto mt-24'>
         <div className='mb-10'>
             <p className='py-2 pl-2 font-medium text-4xl text-gray-600'>Search Results</p>
             <p className='p-5 pl-2 text-xl text-gray-600'>Found {queryfiles.length} results for "{query}" </p>
         </div>
-        <div className='grid grid-cols-5 grid-rows-5 ml-8'>
+        <div className='flex flex-wrap mb-5 m-5'>
             {queryfiles.map(file => (
                 <FileCard fileurl={file.fileUrl} caption={file.caption}/>
             ))}

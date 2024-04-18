@@ -21,30 +21,36 @@ const filecard = ({caption, fileurl}) => {
     "default":<InsertDriveFileIcon/>
   }
   return (
-    <div className='flex mx-auto w-[300px] h-[335px] rounded-lg shadow-sm bg-slate-100 text-zinc-700 hover:shadow-xl ease-in-out duration-75 hover:bg-slate-200 p-2'>
+    <div className='mr-4 p-2 rounded-lg w-[300px] shadow-sm bg-slate-100 text-zinc-700 hover:shadow-xl ease-in-out duration-75 hover:bg-slate-200'>
       <a href={fileurl} target="_blank" rel="noreferrer" download className='w-[100%]'>
-        <div className='flex items-center gap-2'>
+        <div className='flex items-center mb-2'>
           {
             isImage?
-            (<ImageIcon className='text-red-600'/>)
+            (<ImageIcon className='absolute text-red-600'/>)
             :
-            (doc_map[file_type])
+            (
+              file_type in doc_map?
+              (<div className='absolute'>{doc_map[file_type]}</div>)
+              :
+              (<div className='absolute'>{doc_map['default']}</div>)
+            )
           }
           {caption.length > char_lim ?
-                (<p className='w-[100%] text-center font-semibold text-lg mb-2'>{caption.slice(0, char_lim) + "..."}</p>)
+                (<p className='w-[100%] text-center font-semibold text-sm mx-8'>{caption.slice(0, char_lim) + "..."}</p>)
                 :
-                (<p className='w-[100%] text-center font-semibold text-lg mb-2'>{caption}</p>)
+                (<p className='w-[100%] text-center font-semibold text-sm mx-8'>{caption}</p>)
           }
         </div>
           {
             isImage?
-            (<img src = {fileurl} alt = {caption} className='w-[100%] aspect-square object-cover rounded-lg'/>)
+            (<img src = {fileurl} alt = {caption} className='w-[300px] aspect-square object-cover rounded-lg my-auto'/>)
             :
             (
-              <div className='flex items-center justify-center w-max mt-32 mx-auto scale-[700%]'>
+              <div className='flex items-center justify-center mt-28 mx-auto scale-[500%]'>
                 {
                   file_type in doc_map?
-                  (doc_map[file_type]):
+                  (doc_map[file_type])
+                  :
                   (doc_map["default"])
                 }
               </div>

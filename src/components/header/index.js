@@ -23,7 +23,7 @@ const Header = ({setSearchQuery, onSignout }) => {
   };
 
   return (
-    <div className="flex w-[100vw] h-24 bg-slate-50 p-4">
+    <div className="fixed z-10 flex w-[100vw] h-24 bg-slate-50 p-4">
       {/* Logo icon div */}
       <div className="flex items-center justify-start">
         <img className="h-[100%] object-contain" src={CloudCoverIcon} alt="CloudCover Logo" />
