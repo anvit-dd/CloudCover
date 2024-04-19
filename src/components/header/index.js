@@ -1,7 +1,6 @@
 import React from 'react';
 import CloudCoverIcon from '../../media/CloudCover.png';
 import SearchIcon from '@material-ui/icons/Search';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AppsIcon from '@material-ui/icons/Apps';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import SettingsIcon from '@material-ui/icons/Settings';
@@ -30,11 +29,10 @@ const Header = ({setSearchQuery, onSignout }) => {
         <span className="text-zinc-600 text-2xl ml-3 font-semibold">CloudCover</span>
       </div>
       {/* Search container */}
-      <div className="flex-1 items-center p-2">
+      <div className="flex-1 items-center p-2 min-w-[50%]">
         <div className="w-[50%] h-[100%] bg-slate-200 p-2 rounded-full items-center py-4 px-4 flex">
           <SearchIcon className="text-slate-600 text-lg" />
-          <input type="text" placeholder="Search Here" onChange={(qry) => sendQuery(qry.target.value)} className="flex-1 h-[125%] bg-transparent mx-1 p-2 focus:outline-none text-bold text-black text-lg" />
-          <ExpandMoreIcon className="text-slate-600 text-lg" />
+          <input type="text" placeholder="Search Here..." onChange={(qry) => sendQuery(qry.target.value)} className="flex-1 h-[125%] bg-transparent mx-1 p-2 focus:outline-none text-bold text-black text-lg" />
         </div>
       </div>
       {/* header icons */}

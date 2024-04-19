@@ -10,7 +10,7 @@ import StorageIndicator from '../sidebar/storage'
 
 function index({folder_name}) {
   return (
-      <div className="fixed z-10 mt-24 scroll-none top-0 w-[15%] h-[100vh] bg-slate-50 p-4">
+      <div className="fixed z-10 mt-24 scroll-none top-0 min-w-[15%] h-[100vh] bg-slate-50 p-4">
         <NewFile className='mx-auto' folder_name = {folder_name}/>
         <div className='mt-6'>
           <SidebarItem icon = {(HomeOutlinedIcon)} label ={"Home"}/>
@@ -19,9 +19,6 @@ function index({folder_name}) {
           <SidebarItem icon = {(StorageOutlinedIcon)} label ={"Storage"}/>
           <SidebarItem icon = {(DeleteOutlineIcon)} label ={"Trash"}/>
           <StorageIndicator folder_name = {folder_name}/>
-        </div>
-        <div className='absolute bottom-4'>
-          fqefeqf
         </div>
       </div>
   )

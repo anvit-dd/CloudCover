@@ -21,7 +21,7 @@ const filecard = ({caption, fileurl}) => {
     "default":<InsertDriveFileIcon/>
   }
   return (
-    <div className='mr-4 p-2 rounded-lg w-[300px] shadow-sm bg-slate-100 text-zinc-700 hover:shadow-xl ease-in-out duration-75 hover:bg-slate-200'>
+    <div className='mr-4 mb-2 p-2 rounded-lg w-[300px] h-[348.75px] shadow-sm bg-slate-100 text-zinc-700 hover:shadow-xl ease-in-out duration-75 hover:bg-slate-200'>
       <a href={fileurl} target="_blank" rel="noreferrer" download className='w-[100%]'>
         <div className='flex items-center mb-2'>
           {
@@ -36,17 +36,18 @@ const filecard = ({caption, fileurl}) => {
             )
           }
           {caption.length > char_lim ?
-                (<p className='w-[100%] text-center font-semibold text-sm mx-8'>{caption.slice(0, char_lim) + "..."}</p>)
+                (<p className='w-[100%] text-center font-semibold text-lg mx-8'>{caption.slice(0, char_lim) + "..."}</p>)
                 :
-                (<p className='w-[100%] text-center font-semibold text-sm mx-8'>{caption}</p>)
+                (<p className='w-[100%] text-center font-semibold text-lg mx-8'>{caption}</p>)
           }
         </div>
+        <div>
           {
             isImage?
-            (<img src = {fileurl} alt = {caption} className='w-[300px] aspect-square object-cover rounded-lg my-auto'/>)
+            (<img src = {fileurl} alt = {caption} className='w-[300px] h-[300px] aspect-square object-cover rounded-lg my-auto'/>)
             :
             (
-              <div className='flex items-center justify-center mt-28 mx-auto scale-[500%]'>
+              <div className='flex items-center justify-center mt-28 m-auto w-max scale-[500%]'>
                 {
                   file_type in doc_map?
                   (doc_map[file_type])
@@ -56,6 +57,7 @@ const filecard = ({caption, fileurl}) => {
               </div>
             )
           }
+        </div>
       </a>
     </div>
   )

@@ -19,12 +19,12 @@ const FilesView = ({folder_name}) => {
 
   return (
     <div className='w-[85%] ml-auto mt-24'>
-      <div className='flex mb-5 m-5 justify-start'>
+      <div className='flex flex-wrap mx-auto mt-4 mb-2 ml-9 justify-start'>
         {
           files.length>0?
         (
           files.slice(0,4).map(({id, item})=>(
-            <FileCard caption={item.caption} fileurl={item.fileUrl}/>
+            <FileCard key = {id} caption={item.caption} fileurl={item.fileUrl}/>
           ))
         )
         :
@@ -54,6 +54,7 @@ const FilesView = ({folder_name}) => {
               <tbody className='first:bg-slate-400'>
                 {files.map(({ id, item }) => (
                     <FileItem
+                      key = {id}
                       id = {id}
                       caption={item.caption}
                       fileurl={item.fileUrl}
