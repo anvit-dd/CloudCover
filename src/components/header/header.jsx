@@ -20,12 +20,10 @@ const Header = ({setSearchQuery, onSignout }) => {
   Modal.setAppElement(document.body)
   return (
     <div className="fixed z-10 flex w-[100vw] h-20 bg-slate-50 p-1">
-      {/* Logo icon div */}
       <div className="flex items-center justify-start w-[15%] p-2">
         <img className="h-[100%] object-contain" src={CloudCoverIcon} alt="CloudCover Logo" />
         <span className="text-zinc-600 text-2xl ml-3 font-semibold">CloudCover</span>
       </div>
-      {/* Search container */}
       <div className="flex-1 items-center p-2 w-[50%] h-auto">
         <div className="w-[65%] h-[100%] bg-slate-200 mx-auto p-2 rounded-full items-center py-4 px-4 flex">
           <FontAwesomeIcon icon={faMagnifyingGlass} className='text-slate-600'/>
